@@ -5,11 +5,11 @@ pub fn main() {
     let t: usize = read_line().parse().unwrap();
 
     for _ in 0..t {
-        let (n, _a) = read_line()
+        let n: usize = read_line()
             .split_once(" ")
-            .unwrap();
-        
-        let n: i32 = n.parse().unwrap();
+            .unwrap()
+            .0
+            .parse().unwrap();
 
         let line = read_line();
         let name_to_idx: HashMap<&str, usize> = line

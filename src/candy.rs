@@ -4,15 +4,10 @@ use std::io::stdin;
 pub fn main() {
     let _n: usize = read_line().parse().unwrap();
     let words = read_line();
-    let mut max_str = "";
-    let mut max_score = 0;
-    for word in words.split_whitespace() {
-        let count = word.chars().collect::<HashSet<_>>().len();
-        if count > max_score {
-            max_str = word;
-            max_score = count;
-        }
-    }
+    let (max_str, max_score) = words.split_whitespace()
+        .map(|s| (s, s.chars().collect::<HashSet<_>>().len()))
+        .max_by_key(|s| s.1)
+        .unwrap();
 
     println!("{} {}", max_str, max_score);
 }
